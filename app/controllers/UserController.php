@@ -19,7 +19,7 @@ class UserController extends BaseController
             $user = $this->userModel->getUserByEmail($email);
 
             if ($user && password_verify($password, $user['mdpMemb'])) {
-                $_SESSION['idMemb'] = $user['id'];
+                $_SESSION['idMemb'] = $user['idMemb'];
                 $_SESSION['prenom'] = $user['prenomMemb'];
                 $_SESSION['nom'] = $user['nomMemb'];
                 $_SESSION['type'] = $user['typeMemb'];

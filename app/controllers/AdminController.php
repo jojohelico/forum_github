@@ -24,7 +24,7 @@ class AdminController extends BaseController
 
         $membres = $userModel->getAllUsers();
         $categories = $categorieModel->getAllCat();
-        $rubriques = $rubriqueModel->getGroupedByCategorie();
+        $rubriques = $rubriqueModel->getAllRub();
 
         require_once '../app/views/admin/index.php';
     }

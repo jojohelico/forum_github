@@ -12,4 +12,6 @@ require_once '../core/Database.php';
 
 // Load helper functions
 require_once '../core/helpers.php';
+
+
 ?>

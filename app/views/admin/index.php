@@ -14,12 +14,12 @@
                             <td class="colUtilMail"><?= $ligne['emailMemb'] ?></td>
                             <td class="colUtilSupp">
                                 <div class="flex">
-                                    <a href="<?= base_url('/admin/updateType?idMemb=' . $ligne['id']) ?>">
+                                    <a href="<?= base_url('/admin/updateType?idMemb=' . $ligne['idMemb']) ?>">
                                         <button class="buttonStatut <?= $ligne['typeMemb'] == 0 ? 'rouge' : ($ligne['typeMemb'] == 1 ? 'bleu' : 'noir') ?>">
                                             <?= $ligne['typeMemb'] == 0 ? 'Administrateur' : ($ligne['typeMemb'] == 1 ? 'Modérateur' : 'Utilisateur') ?>
                                         </button>
                                     </a>
-                                    <a href="<?= base_url('/admin/deleteUser?idMemb=' . $ligne['id']) ?>"
+                                    <a href="<?= base_url('/admin/deleteUser?idMemb=' . $ligne['idMemb']) ?>"
                                     onclick="return(confirm('CONFIRMATION DE SUPPRESSION\n\n Etes-vous sûr de vouloir supprimer ce membre?'));">
                                         <button class="buttonStatut gris">Supprimer</button>
                                     </a>
