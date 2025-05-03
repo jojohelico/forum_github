@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
-<body>
+<div class="main">
     <h1>Welcome to My PHP MVC Project</h1>
-</body>
+</div>
 </html>
 <?php include("layout/footer.php"); ?>

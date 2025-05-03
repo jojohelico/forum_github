@@ -44,5 +44,24 @@ class User
         $NbMemb = $stmtNbUsers->fetchColumn();
         return $NbMemb;
     }
+    
+    public function getAllUsers()
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM users');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateUser($id)
+    {
+        $stmt = $this->pdo->prepare('UPDATE users SET typeMemb=(typeMemb +1)%3 where id = :idMemb');
+        return $stmt->execute([':idMemb' => $id]);
+    }
+
+    public function deleteUser($id)
+    {
+        $stmt = $this->pdo->prepare('DELETE FROM users WHERE id = :idMemb');
+        return $stmt->execute([':idMemb' => $id]);
+    }
 
 }

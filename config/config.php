@@ -8,5 +8,5 @@ return [
     'password' => 'mdpForum',
 
     // Url
-    'base_url' => '/Forum-rework/public'
+    'base_url' => '/forum_github/public'
 ];

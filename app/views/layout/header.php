@@ -28,14 +28,17 @@ $db = Database::getConnexion();
             }
             ?>
 
-            <a class="accue" href="/Forum-rework/public/home"><img class="acc" src="<?php echo base_url('/images/accueil.jpg'); ?> " alt="Image flottante" />
+            <?php
+            echo '<a class="accue" href="' . base_url('/home') . '"';
+            ?>
+                <img class="acc" src="<?php echo base_url('/images/accueil.jpg'); ?> " alt="Image flottante" />
                 <div class="accu"> Accueil
             </a>&nbsp;&nbsp;&nbsp;
             <?php
             if (isset($_SESSION['type'])) {
 
                 if ($_SESSION['type'] == 0)
-                    echo '<a class="accu" href="administrateur.php"> Administrateur </a>';
+                    echo '<a class="accu" href="' . base_url('/admin/index') . '">Administrateur</a>';
                 if ($_SESSION['type'] == 1)
                     echo '<a class="accu" href="moderateur.php"> Modérateur </a>';
             }
