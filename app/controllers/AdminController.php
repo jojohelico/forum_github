@@ -6,10 +6,6 @@ require_once 'BaseController.php';
 
 class AdminController extends BaseController
 {
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
-    }
-
     public function index()
     {
 

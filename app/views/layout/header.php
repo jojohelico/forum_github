@@ -31,11 +31,8 @@
             </a>&nbsp;&nbsp;&nbsp;
             <?php
             if (isset($_SESSION['type'])) {
-
                 if ($_SESSION['type'] == 0)
                     echo '<a class="accu" href="' . base_url('/admin/index') . '">Administrateur</a>';
-                if ($_SESSION['type'] == 1)
-                    echo '<a class="accu" href="moderateur.php"> Modérateur </a>';
             }
             ?>
 

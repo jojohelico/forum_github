@@ -37,12 +37,12 @@ class Article
         return $data['Nb'] + 1;
     }
     
-    public function create($titre, $contenu, $idMemb, $idRub) {
+    public function createArt($titre, $contenu, $idMemb, $idRub) {
         $stmt = $this->pdo->prepare("INSERT INTO article (titreArt, contenuArt, idMemb, idRub) VALUES (?, ?, ?, ?)");
         $stmt->execute([$titre, $contenu, $idMemb, $idRub]);
     }
 
-    public function delete($idArt) {
+    public function deleteArt($idArt) {
         $stmt = $this->pdo->prepare("DELETE FROM article WHERE idArt = :idArt");
         $stmt->execute(['idArt' => $idArt]);
     }

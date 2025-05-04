@@ -33,7 +33,7 @@ class RubriqueController extends BaseController {
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Art'], $_POST['contenuArt'], $_SESSION['idMemb'], $_GET['Rub'])) {
             $articleModel = new Article($this->pdo);
-            $articleModel->create($_POST['Art'], $_POST['contenuArt'], $_SESSION['idMemb'], $_GET['Rub']);
+            $articleModel->createArt($_POST['Art'], $_POST['contenuArt'], $_SESSION['idMemb'], $_GET['Rub']);
         }
         header('Location: ' . base_url('/rubrique/show?rub=' . $_GET['Rub']));
         exit;
@@ -46,11 +46,57 @@ class RubriqueController extends BaseController {
 
         if (isset($_GET['Article'], $_GET['Rub'])) {
             $articleModel = new Article($this->pdo);
-            $articleModel->delete($_GET['Article']);
+            $articleModel->deleteArt($_GET['Article']);
             header('Location: ' . base_url('/rubrique/show?rub=' . $_GET['Rub']));
             exit;
         }
     }
 
+    public function deleteRub() {
+        if (isset($_GET['Rubrique'])) {
+            $idRub = intval($_GET['Rubrique']);
+            $model = new Rubrique($this->pdo);
+            $model->deleteRub($idRub);
+
+            header('Location: ' . base_url('/admin/index'));
+            exit();
+         }
+    }
+
+    public function addRub() {
+        if (
+            isset($_POST['NomRub'], $_POST['IdCat']) &&
+            !empty($_POST['NomRub']) &&
+            !empty($_POST['IdCat'])
+        ) {
+            $nomRub = htmlspecialchars($_POST['NomRub']);
+            $idCat = intval($_POST['IdCat']);
+            $descRub = htmlspecialchars($_POST['DescRub']) ? htmlspecialchars($_POST['DescRub']) : null;
+
+            $model = new Rubrique($this->pdo);
+            $model->createRub($descRub, $idCat, $nomRub);
+
+            header('Location: ' . base_url('/admin/index'));
+            exit();
+        } else {
+            echo "Le titre et la catégorie sont obligatoires.";
+        }
+    }
+
+    public function modifRub() {
+        if (isset($_POST['idRub'], $_POST['NomRub'])) {
+            $idRub = intval($_POST['idRub']);
+            $nomRub = htmlspecialchars($_POST['NomRub']);
+            $descRub = isset($_POST['DescRub']) ? htmlspecialchars($_POST['DescRub']) : null;
+    
+            $rubriqueModel = new Rubrique($this->pdo);
+            $rubriqueModel->modifRub($idRub, $nomRub, $descRub);
+    
+            header('Location: ' . base_url('/admin/index'));
+            exit();
+        } else {
+            echo "Champs manquants.";
+        }
+    }
 }
     
