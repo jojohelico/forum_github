@@ -1,7 +1,3 @@
-<?php
-$db = Database::getConnexion();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,7 +5,6 @@ $db = Database::getConnexion();
     <meta charset="UTF-8">
     <title>forum bts sio</title>
     <link rel="stylesheet" href="<?php echo base_url('/css/style.css'); ?> ">
-    <!-- <?php include("date.php"); ?> -->
 </head>
 
 <body>

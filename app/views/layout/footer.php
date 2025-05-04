@@ -20,6 +20,4 @@
             <div class="message1"><?= $this->latestMember ?><br>Membre le plus récent</div>
         </div>
     </h4>
-
-    <a class="charte1" href="<?= base_url('/pdf/Charte.pdf') ?>" target="_blank">charte du site</a>
 </footer>

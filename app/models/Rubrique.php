@@ -20,4 +20,10 @@ class Rubrique
         $stmt->execute(['idCat' => $idCat]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getById($idRub) {
+        $stmt = $this->pdo->prepare("SELECT * FROM rubrique WHERE idRub = ?");
+        $stmt->execute([$idRub]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

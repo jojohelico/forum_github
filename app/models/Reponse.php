@@ -34,4 +34,20 @@ class Reponse
         $stmt->execute(['idRub' => $idRub]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function getByArticle($idArt) {
+        $stmt = $this->pdo->prepare("SELECT * FROM reponse WHERE idArt = ?");
+        $stmt->execute([$idArt]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function create($contenu, $idMemb, $idArt) {
+        $stmt = $this->pdo->prepare("INSERT INTO reponse (contenuRep, idMemb, idArt) VALUES (?, ?, ?)");
+        $stmt->execute([$contenu, $idMemb, $idArt]);
+    }
+
+    public function delete($idRep) {
+        $stmt = $this->pdo->prepare("DELETE FROM reponse WHERE idRep = ?");
+        $stmt->execute([$idRep]);
+    }
 }
