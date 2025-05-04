@@ -1,13 +1,15 @@
 <?php
 require_once '../app/models/User.php'; // Load User model
+require_once 'BaseController.php';
 
-class UserController
+class UserController extends BaseController
 {
     private $userModel;
 
     public function __construct($pdo) {
         $this->userModel = new User($pdo);
     }
+    
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,12 +19,12 @@ class UserController
             $user = $this->userModel->getUserByEmail($email);
 
             if ($user && password_verify($password, $user['mdpMemb'])) {
-                $_SESSION['idMemb'] = $user['id'];
+                $_SESSION['idMemb'] = $user['idMemb'];
                 $_SESSION['prenom'] = $user['prenomMemb'];
                 $_SESSION['nom'] = $user['nomMemb'];
                 $_SESSION['type'] = $user['typeMemb'];
 
-                header('Location: ' . base_url('/home/index') . '');
+                header('Location: ' . base_url('/home') . '');
                 exit();
             } else {
                 $_SESSION['error'] = "Mot de passe ou utilisateur incorrect";
@@ -69,7 +71,7 @@ class UserController
         session_start();
         session_unset();
         session_destroy();
-        header('Location: ' . base_url('/home/index'));
+        header('Location: ' . base_url('/home'));
         exit();
     }
 
@@ -80,6 +82,8 @@ class UserController
 
         // Pass the data to the view
         include '../app/views/home.php';
-        
+        return $nbUsers;
     }
+
+    
 }

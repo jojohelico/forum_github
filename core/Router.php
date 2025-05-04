@@ -6,7 +6,7 @@ class Router {
     public function run() {
         $pdo = Database::getConnexion(); 
         // Get URL from browser (or default to 'home/index')
-        $url = isset($_GET['url']) ? $_GET['url'] : 'home/index';
+        $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 
         // Split URL into parts (e.g., "/user/profile" → ['user', 'profile'])
         $urlParts = explode('/', trim($url, '/'));
